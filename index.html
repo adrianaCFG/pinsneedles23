@@ -20,9 +20,12 @@
       display:flex; align-items:center; justify-content:space-between; gap:12px;
       margin-bottom:16px;
     }
-    .brand{display:flex; align-items:center; gap:12px;}
+    .brand{display:flex; align-items:center; gap:12px; background-image: url('pins&needles-storefront.jpg');
+}
+}
     .logo{
-      width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#00aaff);
+      width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#00aaff);background-image: url('pins&needles_logo.jpg');
+}
       display:flex; align-items:center; justify-content:center; color:white; font-weight:700;
     }
     h1{font-size:1.1rem; margin:0}
@@ -85,13 +88,12 @@
   <div class="container" role="document">
     <header>
       <div class="brand">
-    <img class="brand"  src="pins&needles-shopfront.jpg" alt="Header Image" class="header-image">
     <div>
         <img class="logo" src="pins&needles_logo.jpg" alt="Pins & Needles Logo">
-    </div> /* logo */
+    </div>
     <h1>Pins & Needles</h1>
     <h2>For all your haberdashery needs in BS9 and beyond</h2>
-      </div> /* brand */
+      </div> 
 
       <div>
         <button id="navToggle" class="nav-toggle" aria-controls="mainNav" aria-expanded="false" aria-label="Open menu">

@@ -1,9 +1,296 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Studio / Workshop — Example</title>
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#ffffff; --accent:#0066cc; --muted:#6b7280;
+      --radius:12px; --gap:16px; font-family:Inter,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; background:var(--bg); color:#0f1724; -webkit-font-smoothing:antialiased;
+      line-height:1.4; padding:16px;
+    }
+    .container{max-width:920px; margin:0 auto;}
+    header{
+      display:flex; align-items:center; justify-content:space-between; gap:12px;
+      margin-bottom:16px;
+    }
+    .brand{display:flex; align-items:center; gap:12px;}
+    .logo{
+      width:44px; height:44px; border-radius:10px; background:linear-gradient(135deg,var(--accent),#00aaff);
+      display:flex; align-items:center; justify-content:center; color:white; font-weight:700;
+    }
+    h1{font-size:1.1rem; margin:0}
+    p.lead{margin:4px 0 0; color:var(--muted); font-size:0.95rem}
+    .nav-toggle{
+      background:transparent; border:0; padding:8px; display:flex; align-items:center; gap:8px;
+    }
+    nav{display:none}
+    nav a{display:block; padding:10px 0; color:var(--accent); text-decoration:none; font-weight:600}
+    .hero{
+      background:linear-gradient(180deg, rgba(0,102,204,0.05), transparent);
+      border-radius:var(--radius); padding:14px; margin-bottom:16px;
+    }
+    .hero .row{display:flex; gap:12px; align-items:center}
+    .cta{
+      background:var(--accent); color:white; border:0; padding:10px 14px; border-radius:10px;
+      font-weight:600; text-decoration:none;
+    }
+
+    /* Cards */
+    .card{
+      background:var(--card); border-radius:var(--radius); padding:12px; margin-bottom:12px;
+      box-shadow:0 1px 4px rgba(9,10,11,0.04);
+    }
+    .section-title{display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:8px}
+    .section-title h2{font-size:1rem; margin:0}
+    .hours-list{display:grid; gap:6px}
+    .hours-item{display:flex; justify-content:space-between; color:var(--muted); font-size:0.95rem}
+
+    /* Workshops */
+    .workshops-list{display:grid; gap:10px}
+    .workshop{
+      border-radius:10px; padding:10px; background:linear-gradient(180deg,#fff,#fbfdff); border:1px solid rgba(9,10,11,0.04);
+    }
+    .workshop .meta{display:flex; justify-content:space-between; gap:8px; align-items:center}
+    .workshop .title{font-weight:700}
+    .workshop .date{color:var(--muted); font-size:0.9rem}
+    .expand-btn{background:transparent;border:0;color:var(--accent);font-weight:600;padding:6px 0}
+    .details{margin-top:8px;color:var(--muted);font-size:0.95rem;display:none}
+    .details.open{display:block}
+
+    /* Features */
+    .features{display:grid; gap:10px}
+    .feature{display:flex; gap:10px; align-items:flex-start}
+    .feature svg{width:36px;height:36px; flex-shrink:0}
+
+    footer{margin-top:18px; text-align:center; color:var(--muted); font-size:0.9rem}
+
+    /* Larger screens */
+    @media(min-width:640px){
+      body{padding:24px}
+      .hero .row{align-items:flex-start}
+      nav{display:block}
+      .nav-inline{display:flex; gap:12px; align-items:center}
+      .features{grid-template-columns:repeat(3,1fr)}
+    }
+  </style>
+</head>
 <body>
+  <div class="container" role="document">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden="true">SW</div>
+        <div>
+          <h1>Studio & Workshops</h1>
+          <p class="lead">Hands-on learning in a friendly, accessible space</p>
+        </div>
+      </div>
 
-<h1>title </h1>
-<p>this is pins test page .</p>
+      <div>
+        <button id="navToggle" class="nav-toggle" aria-controls="mainNav" aria-expanded="false" aria-label="Open menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="#0f1724" stroke-width="1.6" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <nav id="mainNav" aria-label="Main" hidden>
+          <div class="card nav-card">
+            <a href="#hours">Opening hours</a>
+            <a href="#workshops">Upcoming workshops</a>
+            <a href="#features">Features</a>
+            <a href="#contact">Contact</a>
+          </div>
+        </nav>
+      </div>
+    </header>
 
+    <main>
+      <section class="hero card" aria-labelledby="heroTitle">
+        <div class="row">
+          <div style="flex:1">
+            <h2 id="heroTitle" style="margin:0 0 6px">Welcome — drop in or book a workshop</h2>
+            <p class="lead" style="margin-bottom:10px">Small, focused sessions and open studio hours. Accessible and beginner-friendly.</p>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:8px">
+            <a class="cta" href="#workshops">View workshops</a>
+            <a style="text-align:center; color:var(--accent); font-weight:600; text-decoration:none;" href="#hours">Opening hours</a>
+          </div>
+        </div>
+      </section>
+
+      <section id="hours" class="card" aria-labelledby="hoursTitle">
+        <div class="section-title">
+          <h2 id="hoursTitle">Opening hours</h2>
+          <small style="color:var(--muted)">Drop-in and bookings available</small>
+        </div>
+        <div class="hours-list" role="list">
+          <div class="hours-item" role="listitem"><span>Monday</span><span>Closed</span></div>
+          <div class="hours-item" role="listitem"><span>Tuesday</span><span>10:00 — 18:00</span></div>
+          <div class="hours-item" role="listitem"><span>Wednesday</span><span>10:00 — 18:00</span></div>
+          <div class="hours-item" role="listitem"><span>Thursday</span><span>12:00 — 20:00</span></div>
+          <div class="hours-item" role="listitem"><span>Friday</span><span>10:00 — 18:00</span></div>
+          <div class="hours-item" role="listitem"><span>Saturday</span><span>09:30 — 16:00</span></div>
+          <div class="hours-item" role="listitem"><span>Sunday</span><span>Closed</span></div>
+          <div style="margin-top:8px; color:var(--muted); font-size:0.9rem">Last updated: 2025-10-18</div>
+        </div>
+      </section>
+
+      <section id="workshops" class="card" aria-labelledby="workshopsTitle">
+        <div class="section-title">
+          <h2 id="workshopsTitle">Upcoming workshops</h2>
+          <a class="expand-btn" href="#all" onclick="event.preventDefault(); document.getElementById('workshops').scrollIntoView();">All workshops →</a>
+        </div>
+
+        <div class="workshops-list">
+          <article class="workshop" aria-labelledby="w1Title">
+            <div class="meta">
+              <div>
+                <div id="w1Title" class="title">Intro to Screenprinting</div>
+                <div class="date">Sat • Nov 1 • 10:00 — 13:00</div>
+              </div>
+              <div>
+                <button class="expand-btn" aria-expanded="false" aria-controls="w1Details">Details</button>
+              </div>
+            </div>
+            <div id="w1Details" class="details" role="region" aria-hidden="true">
+              Learn the basics of screenprinting: prepping screens, ink mixing, and a simple two-color print. Materials included.
+              <div style="margin-top:8px">
+                <a class="cta" href="#" onclick="alert('RSVP stub — replace with your booking link')">RSVP</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="workshop" aria-labelledby="w2Title">
+            <div class="meta">
+              <div>
+                <div id="w2Title" class="title">Digital Fabrication for Beginners</div>
+                <div class="date">Wed • Nov 12 • 18:30 — 20:30</div>
+              </div>
+              <div>
+                <button class="expand-btn" aria-expanded="false" aria-controls="w2Details">Details</button>
+              </div>
+            </div>
+            <div id="w2Details" class="details" role="region" aria-hidden="true">
+              Intro to laser cutting and vinyl cutting. Bring a laptop if you want to design your own piece. Safety briefing included.
+              <div style="margin-top:8px">
+                <a class="cta" href="#" onclick="alert('RSVP stub — replace with your booking link')">RSVP</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="workshop" aria-labelledby="w3Title">
+            <div class="meta">
+              <div>
+                <div id="w3Title" class="title">Open Studio: Drop-in Print Night</div>
+                <div class="date">Fri • Nov 21 • 18:00 — 21:00</div>
+              </div>
+              <div>
+                <button class="expand-btn" aria-expanded="false" aria-controls="w3Details">Details</button>
+              </div>
+            </div>
+            <div id="w3Details" class="details" role="region" aria-hidden="true">
+              Open studio for members and visitors. Bring a project or work on a studio print. Pay-as-you-go access to tools.
+              <div style="margin-top:8px">
+                <a class="cta" href="#" onclick="alert('RSVP stub — replace with your booking link')">RSVP</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="features" class="card" aria-labelledby="featuresTitle">
+        <div class="section-title">
+          <h2 id="featuresTitle">Features</h2>
+          <small style="color:var(--muted)">Designed to be quick and usable on your phone</small>
+        </div>
+
+        <div class="features">
+          <div class="feature">
+            <!-- Simple SVG icon -->
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <rect x="3" y="3" width="18" height="14" rx="2" stroke="#0066cc" stroke-width="1.6"/>
+              <path d="M7 21h10" stroke="#0066cc" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <div style="font-weight:700">Mobile-first UI</div>
+              <div style="color:var(--muted)">Large buttons and clear layout for one-handed use.</div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="8" r="3" stroke="#00aaff" stroke-width="1.6"/>
+              <path d="M5 20c1.5-4 5-6 7-6s5.5 2 7 6" stroke="#00aaff" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <div style="font-weight:700">Workshops & RSVP</div>
+              <div style="color:var(--muted)">Easily view upcoming sessions and reserve a spot.</div>
+            </div>
+          </div>
+
+          <div class="feature">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M3 7h18M6 11h12M9 15h6" stroke="#22c55e" stroke-width="1.6" stroke-linecap="round"/>
+            </svg>
+            <div>
+              <div style="font-weight:700">Clear hours & contact</div>
+              <div style="color:var(--muted)">Know when we’re open at a glance and get in touch quickly.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer id="contact" class="card" aria-labelledby="contactTitle">
+        <h2 id="contactTitle" style="margin-top:0; font-size:1rem">Contact</h2>
+        <div style="color:var(--muted)">Email: <a href="mailto:hello@example.com">hello@example.com</a> · Phone: <a href="tel:+1234567890">+1 234 567 890</a></div>
+        <div style="margin-top:8px; color:var(--muted)">Address: 123 Workshop Lane, City</div>
+        <div style="margin-top:10px; font-size:0.9rem; color:var(--muted)">© 2025 Studio & Workshops</div>
+      </footer>
+    </main>
+  </div>
+
+  <script>
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    navToggle.addEventListener('click', () => {
+      const opened = navToggle.getAttribute('aria-expanded') === 'true';
+      navToggle.setAttribute('aria-expanded', String(!opened));
+      if (!opened) {
+        mainNav.hidden = false;
+        mainNav.querySelector('a')?.focus();
+      } else {
+        mainNav.hidden = true;
+      }
+    });
+
+    // Workshops accordion behavior
+    document.querySelectorAll('.workshop').forEach(w => {
+      const btn = w.querySelector('.expand-btn');
+      const details = w.querySelector('.details');
+      btn.addEventListener('click', () => {
+        const isOpen = details.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+        details.setAttribute('aria-hidden', String(!isOpen));
+      });
+    });
+
+    // Simple keyboard accessibility: close nav with Escape
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        if (!mainNav.hidden) {
+          mainNav.hidden = true;
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.focus();
+        }
+      }
+    });
+  </script>
 </body>
 </html>

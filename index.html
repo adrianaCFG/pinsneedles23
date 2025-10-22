@@ -96,14 +96,37 @@
 
     footer{margin-top:18px; text-align:center; color:var(--muted); font-size:0.9rem}
 
-    /* Larger screens */
-    @media(min-width:640px){
-      body{padding:24px}
-      .hero .row{align-items:flex-start}
-      nav{display:block}
-      .nav-inline{display:flex; gap:12px; align-items:center}
-      .features{grid-template-columns:repeat(3,1fr)}
-    }
+
+/* Desktop styles */
+@media (min-width: 768px) {
+  .container {
+    max-width: 1200px; /* Wider container */
+    padding: 20px;
+  }
+
+  header {
+    padding: 10px 20px;
+  }
+
+  .workshops-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns on desktop */
+    gap: 20px;
+  }
+
+  .features {
+    grid-template-columns: repeat(3, 1fr); /* Three columns on desktop */
+    gap: 20px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  body {
+    padding: 30px;
+  }
+}
   </style>
 </head>
 <body>

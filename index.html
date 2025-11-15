@@ -314,23 +314,9 @@ THESE WORKSHOPS ARE SUITABLE FOR EVERYONE OF ALL ABILITIES. Never crafted before
 </footer>
 
   <script>
-    
-// Mobile nav toggle
+ 
 
-const navToggle = document.getElementById('navToggle');
-const mainNav = document.getElementById('mainNav');
 
-navToggle.addEventListener('click', () => {
-  console.log("Nav toggle clicked!"); 
-  const opened = navToggle.getAttribute('aria-expanded') === 'true';
-  navToggle.setAttribute('aria-expanded', String(!opened));
-  if (!opened) {
-    mainNav.hidden = false;
-    mainNav.querySelector('a')?.focus();
-  } else {
-    mainNav.hidden = true;
-  }
-});
 
 
     // Workshops accordion behavior
@@ -344,16 +330,8 @@ navToggle.addEventListener('click', () => {
       });
     });
 
-    // Simple keyboard accessibility: close nav with Escape
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') {
-        if (!mainNav.hidden) {
-          mainNav.hidden = true;
-          navToggle.setAttribute('aria-expanded', 'false');
-          navToggle.focus();
-        }
-      }
-    });
+    
+
   </script>
 </body>
 </html>
